@@ -1,29 +1,45 @@
+#include <algorithm>
 #include <cstdlib>
 #include <exception>
 #include <iostream>
 #include <stdexcept>
 
-#define MAX 100
 using namespace std;
 
-template <typename T> class Les {
+template <typename T> class Lds {
 private:
-  T v[MAX];
   int n;
+  int alocado;
+  T *v;
 
 public:
-  Les() : n(0) {
+  Lds(int aloc = 10) : n(0), alocado(aloc), v(new T[alocado]) {
   }
 
-  Les(T elem, int quant) : n(0) {
+  Lds(T elem, int quant) : n(0), alocado(quant), v(new T[alocado]) {
     for (int i = 0; i < quant; i++)
       insere(elem);
   }
 
+  bool realoca(int novoAloc) {
+    if (novoAloc <= n)
+      return false;
+
+    T *vTemp = new T[novoAloc];
+    if (vTemp == NULL)
+      return false;
+
+    copy(v, v + n, vTemp);
+    delete[] v;
+    v = vTemp;
+    return true;
+  }
+
   bool insere(T novo) {
     // dá para inserir?
-    if (n >= MAX)
-      return false;
+    if (n >= alocado)
+      if (!realoca(2 * alocado))
+        return false;
 
     // buscar posicao para inserir
     int i = 0;
@@ -78,6 +94,10 @@ public:
     // v[i-1] = v[i];
 
     n--;
+
+    if (n <= alocado / 2 && n + 1 >= 10)
+      realoca(n + 1);
+
     return true;
   }
 
@@ -93,11 +113,11 @@ public:
     return n;
   }
 
-  void operator=(const Les<T> &outra) {
+  void operator=(const Lds<T> &outra) {
+    n = 0;
     for (int i = 0; i < outra.n; i++) {
-      v[i] = outra.v[i];
+      insere(outra[i]);
     }
-    n = outra.n;
   }
 };
 
@@ -108,8 +128,8 @@ template <typename T> ostream &operator<<(ostream &out, const T &l) {
 }
 
 int main(int argc, char *argv[]) {
-  Les<int> l;
-  Les<int> a(0, 10);
+  Lds<int> l;
+  Lds<int> a(0, 10);
   for (int i = 0; i < 100; i += 3)
     l.insere(i);
 
@@ -121,5 +141,6 @@ int main(int argc, char *argv[]) {
   cout << l.buscaBinaria(33) << endl;
   cout << l.buscaBinaria(3) << endl;
   a = l;
+
   cout << a << endl;
 }
