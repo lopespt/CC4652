@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <cstdlib>
 #include <exception>
 #include <iostream>
@@ -21,7 +22,7 @@ public:
   }
 
   bool insere(T novo) {
-    // dá para inserir?
+    // dÃ¡ para inserir?
     if (n >= MAX)
       return false;
 
@@ -81,23 +82,16 @@ public:
     return true;
   }
 
+  int size() const {
+    return n;
+  }
+
   const T &operator[](int idx) const {
     if (idx >= n) {
       throw std::runtime_error("estourou");
       return v[0];
     }
     return v[idx];
-  }
-
-  int size() const {
-    return n;
-  }
-
-  void operator=(const Les<T> &outra) {
-    for (int i = 0; i < outra.n; i++) {
-      v[i] = outra.v[i];
-    }
-    n = outra.n;
   }
 };
 
