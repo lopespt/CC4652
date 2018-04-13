@@ -7,3 +7,19 @@ Lista Estática Sequencial
 ## LDS
 Lista Dinâmica Sequencial
     - Ordenada Crescente
+
+
+## LDE
+Lista Dinâmica Encadeada
+    - Ordenada Crescente
+
+## FDS
+Fila Dinâmica Sequencial
+    - FIFO
+
+## FDS
+Fila Dinâmica Encadeada
+    - FIFO
+
+
+
