@@ -7,16 +7,17 @@
 
 #include "PDE.hpp"
 #include <iostream>
+#include <cmath>
 
 using namespace std;
 
 int main(int argc, char *argv[]) {
 
-  PDE<int> pilha;
+  PDE<float> pilha;
   for (int i = 0; i < 1000; i++)
-    pilha.empilha(i);
+    pilha.empilha(sqrt(i));
 
-  int a;
+  float a;
 
   while (pilha.desempilha(a)) {
     cout << a << endl;

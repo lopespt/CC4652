@@ -27,6 +27,7 @@ public:
 
     novo->abaixo = topo;
     topo = novo;
+    n++;
 
     return true;
   }
@@ -39,8 +40,13 @@ public:
     valor = topo->valor;
     delete topo;
     topo=prox;
+    n--;
 
     return true;
+  }
+
+  unsigned int tamanho() const{
+      return n;
   }
 
   virtual ~PDE() {

@@ -31,6 +31,10 @@ public:
     return true;
   }
 
+  unsigned int tamanho() const{
+      return t;
+  }
+
   bool desempilha(T &valor) {
     if (t == 0)
       return false;
