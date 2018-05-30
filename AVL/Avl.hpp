@@ -12,7 +12,7 @@ private:
   No<T> *raiz;
   int quantidade;
 
-  void setAltura(No<T>* n{
+  void setAltura(No<T>* n){
     if(!n)
       return;
     int m=-1;
