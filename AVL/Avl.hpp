@@ -122,6 +122,9 @@ public:
     
   };
 
+  No<T>* getRaiz(){
+    return raiz;
+  }
   bool insere(T valor) {
     No<T> *novo = new No<T>(valor);
     if (!novo)

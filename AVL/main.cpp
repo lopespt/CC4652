@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
     A.erd();
     A.red();
     for(auto i : v){
-      A.remove(A.raiz);
+      A.remove(A.getRaiz());
     }
     cout << endl;
 
