@@ -166,7 +166,7 @@ public:
       if(v < atual->valor){
         atual = atual->esq;
       }else if(v > atual->valor){
-        atual = atual->esq;
+        atual = atual->dir;
       }else{
         return atual;
       }

@@ -19,6 +19,9 @@ private:
 public:
   No(T valor) : esq(nullptr), dir(nullptr),pai(nullptr), altura(0), valor(valor){};
   virtual ~No(){};
+  T getValor(){
+    return valor;
+  }
 
   friend class Avl<T>;
 };
